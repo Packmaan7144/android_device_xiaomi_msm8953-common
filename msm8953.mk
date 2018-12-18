@@ -75,7 +75,9 @@ PRODUCT_COPY_FILES += \
 
 # ANT
 PRODUCT_PACKAGES += \
+    rild \
     AntHalService \
+    CarrierConfig \
     com.dsi.ant.antradio_library \
     libantradio
 
@@ -180,7 +182,7 @@ PRODUCT_PACKAGES += \
 # Gatekeeper HAL
 PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-impl \
-    android.hardware.gatekeeper@1.0-service
+    android.hardware.gatekeeper@1.0-service-qti
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -232,8 +234,8 @@ PRODUCT_COPY_FILES += \
 
 # Keymaster HAL
 PRODUCT_PACKAGES += \
-    android.hardware.keymaster@3.0-impl \
-    android.hardware.keymaster@3.0-service
+#    android.hardware.keymaster@3.0-impl \
+#    android.hardware.keymaster@3.0-service
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -314,8 +316,8 @@ PRODUCT_PACKAGES += \
     libxml2 \
     telephony-ext
 
-#PRODUCT_BOOT_JARS += \
-#    telephony-ext
+PRODUCT_BOOT_JARS += \
+    telephony-ext
 
 # Seccomp policy
 PRODUCT_COPY_FILES += \
@@ -341,9 +343,13 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service
 
+
 # VNDK
-PRODUCT_PACKAGES += \
-    vndk-sp
+PRODUCT_PACKAGES += vndk-sp
+
+PRODUCT_COPY_FILES += \
+    prebuilts/vndk/v27/arm/arch-arm-armv7-a-neon/shared/vndk-core/android.frameworks.sensorservice@1.0.so:$(TARGET_COPY_OUT_VENDOR)/lib/android.frameworks.sensorservice@1.0-v27.so \
+    prebuilts/vndk/v27/arm64/arch-arm64-armv8-a/shared/vndk-core/android.frameworks.sensorservice@1.0.so:$(TARGET_COPY_OUT_VENDOR)/lib64/android.frameworks.sensorservice@1.0-v27.so
 
 # Thermal
 PRODUCT_PACKAGES += \

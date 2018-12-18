@@ -40,6 +40,9 @@ TARGET_USES_64_BIT_BINDER := true
 # Kernel
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 androidboot.bootdevice=7824900.sdhci earlycon=msm_hsl_uart,0x78af000
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE += androidboot.veritymode=permissive
+BOARD_KERNEL_CMDLINE += androidboot.secureboot=0
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 BOARD_KERNEL_PAGESIZE :=  2048
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01000000 --tags_offset 0x00000100
@@ -152,17 +155,13 @@ TARGET_EXFAT_DRIVER := sdfat
 TARGET_FS_CONFIG_GEN := $(VENDOR_PATH)/config.fs
 
 # HIDL
-DEVICE_MANIFEST_FILE := $(VENDOR_PATH)/manifest.xml
-DEVICE_MATRIX_FILE   := $(VENDOR_PATH)/compatibility_matrix.xml
+#DEVICE_MANIFEST_FILE := $(VENDOR_PATH)/manifest.xml
+#DEVICE_MATRIX_FILE   := $(VENDOR_PATH)/compatibility_matrix.xml
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_msm8953
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc/
 TARGET_RECOVERY_DEVICE_MODULES := libinit_msm8953
-
-# Lineage Hardware
-BOARD_HARDWARE_CLASS += \
-    $(VENDOR_PATH)/lineagehw
 
 # Keymaster
 TARGET_PROVIDES_KEYMASTER := true
